@@ -6,11 +6,12 @@ AirLeakage
 AngleOfIncidence
 MonoLayerLucent
 MonoLayerOpaque
+MonoLayerOpaqueNf
 MultiLayerLucent
 MultiLayerOpaque
 InteriorConvection
 InteriorConvectionWindow
 ExteriorConvection
 ExteriorSolarAbsorption
-ExteriorHeatRadidation
+ExteriorHeatRadiation
 SwWindowResponse

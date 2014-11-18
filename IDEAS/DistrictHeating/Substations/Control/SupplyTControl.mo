@@ -6,11 +6,11 @@ model SupplyTControl
     Ti=30)
     annotation (Placement(transformation(extent={{-18,-14},{2,6}})));
   Controls.ControlHeating.HeatingCurve heatingCurve(
+    dTOutHeaBal=0,
     TSup_nominal=343.15,
     TSupMin=318.15,
     TRet_nominal=293.15,
-    TOut_nominal=273.15,
-    dTOutHeaBal=0)
+    TOut_nominal=273.15)
     annotation (Placement(transformation(extent={{-80,-34},{-60,-14}})));
   Modelica.Blocks.Logical.GreaterThreshold greaterThreshold(threshold=0.0001)
     annotation (Placement(transformation(extent={{-56,48},{-36,68}})));

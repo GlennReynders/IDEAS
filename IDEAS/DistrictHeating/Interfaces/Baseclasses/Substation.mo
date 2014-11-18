@@ -34,7 +34,9 @@ partial model Substation "Interface for a local substation"
     annotation (Placement(transformation(extent={{90,-90},{110,-70}})));
 
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(graphics={
+            -100},{100,100}}), graphics), Icon(coordinateSystem(
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
+                                               graphics={
         Line(
           points={{0,12},{7.3479e-016,-24}},
           color={0,0,255},
@@ -81,5 +83,26 @@ partial model Substation "Interface for a local substation"
           color={0,0,255},
           smooth=Smooth.None,
           origin={74,-80},
-          rotation=90)}));
+          rotation=90),
+        Line(
+          points={{50,-40},{-40,-40},{-32,-32},{-40,-40},{-32,-48}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Rectangle(
+          extent={{-58,-76},{62,-88}},
+          lineColor={255,255,255},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{-58,-76},{-58,-88}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{62,-76},{62,-88}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{-38,-80},{52,-80},{44,-72},{52,-80},{44,-88}},
+          color={0,0,255},
+          smooth=Smooth.None)}));
 end Substation;

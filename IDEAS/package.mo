@@ -26,12 +26,7 @@ import SI = Modelica.SIunits;
 
 
 annotation (
-<<<<<<< HEAD
-  uses(Modelica(version="3.2.1"), IDEAS(version="0.1"),
-    Buildings(version="1.7")),
-=======
   uses(Modelica(version="3.2.1")),
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
   Icon(graphics),
   version="0.2",
   conversion(noneFromVersion="", noneFromVersion="1"),

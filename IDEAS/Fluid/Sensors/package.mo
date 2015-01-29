@@ -2,16 +2,19 @@ within IDEAS.Fluid;
 package Sensors "Package with sensor models"
   extends Modelica.Icons.SensorsPackage;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
 annotation (preferredView="info",
 Documentation(info="<html>
 <p>
 Package <code>Sensors</code> consists of idealized sensor components that
 provide variables of a medium as
 output signals. These signals can be, e.g., further processed
-with components of the 
+with components of the
 <a href=\"modelica://Modelica.Blocks\">
-Modelica.Blocks</a> 
+Modelica.Blocks</a>
 library.
 </p>
 </html>",

@@ -2,7 +2,10 @@ within IDEAS.Fluid.Sensors.Conversions;
 package Examples "Collection of models that illustrate model use and test models"
   extends Modelica.Icons.ExamplesPackage;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
 annotation (preferredView="info", Documentation(info="<html>
 <p>
 This package contains examples for the use of models that can be found in

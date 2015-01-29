@@ -11,10 +11,9 @@ model ValveParameterization
     CvData=IDEAS.Fluid.Types.CvTypes.OpPoint,
     dpValve_nominal(displayUnit="kPa") = 4500,
     filteredOpening=false) "Valve model, linear opening characteristics"
-         annotation (Placement(transformation(extent={{-10,30},{10,50}},
-                                                                       rotation=
-           0)));
+         annotation (Placement(transformation(extent={{-10,30},{10,50}})));
     Modelica.Blocks.Sources.Constant y(k=1) "Control signal"
+<<<<<<< HEAD
                  annotation (Placement(transformation(extent={{-60,60},{-40,80}},
           rotation=0)));
   IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium =
@@ -25,26 +24,34 @@ model ValveParameterization
         transformation(extent={{-70,-10},{-50,10}},rotation=0)));
   IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium =
         Medium,
+=======
+                 annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
+  IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium
+      = Medium,
+    use_p_in=true,
+    nPorts=3,
+    T=293.15)                                       annotation (Placement(
+        transformation(extent={{-70,-10},{-50,10}})));
+  IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium
+      = Medium,
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
     nPorts=3,
     use_p_in=false,
     p=300000,
     T=293.15)                                       annotation (Placement(
-        transformation(extent={{90,-10},{70,10}},rotation=0)));
+        transformation(extent={{90,-10},{70,10}})));
     Modelica.Blocks.Sources.Ramp PSou(
     duration=1,
     offset=3E5,
     height=1E5)
-      annotation (Placement(transformation(extent={{-100,16},{-80,36}},
-          rotation=0)));
+      annotation (Placement(transformation(extent={{-100,16},{-80,36}})));
   Valves.TwoWayLinear valKv(
     redeclare package Medium = Medium,
     CvData=IDEAS.Fluid.Types.CvTypes.Kv,
     m_flow_nominal=150/3600,
     Kv=0.73,
     filteredOpening=false) "Valve model, linear opening characteristics"
-         annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-                                                                       rotation=
-           0)));
+         annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
   Valves.TwoWayLinear valCv(
     redeclare package Medium = Medium,
@@ -52,11 +59,17 @@ model ValveParameterization
     CvData=IDEAS.Fluid.Types.CvTypes.Cv,
     Cv=0.84,
     filteredOpening=false) "Valve model, linear opening characteristics"
+<<<<<<< HEAD
          annotation (Placement(transformation(extent={{-10,-50},{10,-30}},
                                                                        rotation=
            0)));
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowOpPoi(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{20,30},{40,50}})));
+=======
+         annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+  IDEAS.Fluid.Sensors.MassFlowRate senM_flowOpPoi(redeclare package Medium
+      = Medium) annotation (Placement(transformation(extent={{20,30},{40,50}})));
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowKv(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowCv(redeclare package Medium =
@@ -136,10 +149,7 @@ equation
       points={{30,-29},{30,-20},{50,-20},{50,24},{78,24}},
       color={0,0,127},
       smooth=Smooth.None));
-    annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,
-            -100},{100,100}}),
-                        graphics),
-experiment(StopTime=1.0),
+    annotation (experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://IDEAS/Resources/Scripts/Dymola/Fluid/Actuators/Valves/Examples/ValveParameterization.mos"
         "Simulate and plot"),
     Documentation(info="<html>

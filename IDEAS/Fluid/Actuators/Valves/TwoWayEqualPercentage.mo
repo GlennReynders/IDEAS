@@ -29,7 +29,7 @@ initial equation
 <p>
 Two way valve with an equal percentage valve opening characteristic.
 </p><p>
-This model is based on the partial valve model 
+This model is based on the partial valve model
 <a href=\"modelica://IDEAS.Fluid.Actuators.BaseClasses.PartialTwoWayValve\">
 IDEAS.Fluid.Actuators.BaseClasses.PartialTwoWayValve</a>.
 Check this model for more information, such
@@ -46,14 +46,14 @@ has been added to the variable <code>phi</code>.
 </li>
 <li>
 March 27, 2014 by Michael Wetter:<br/>
-Revised model for implementation of new valve model that computes the flow function 
+Revised model for implementation of new valve model that computes the flow function
 based on a table.
 </li>
 <li>
 February 20, 2012 by Michael Wetter:<br/>
 Renamed parameter <code>dp_nominal</code> to <code>dpValve_nominal</code>,
 and added new parameter <code>dpFixed_nominal</code>.
-See 
+See
 <a href=\"modelica://IDEAS.Fluid.Actuators.UsersGuide\">
 IDEAS.Fluid.Actuators.UsersGuide</a>.
 </li>

@@ -14,12 +14,17 @@ equation
   der(y)=der(x);
   assert(abs(x-y) < 1E-2, "Model has an error");
 
+<<<<<<< HEAD
  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),
                     graphics),
 experiment(StartTime=-1, StopTime=1.0),
 __Dymola_Commands(file="modelica://IDEAS/Resources/Scripts/Dymola/Utilities/Math/Functions/Examples/RegNonZeroPowerDerivativeCheck.mos"
         "Simulate and plot"),
+=======
+ annotation(experiment(StartTime=-1, StopTime=1.0),
+__Dymola_Commands(file="modelica://IDEAS/Resources/Scripts/Dymola/Utilities/Math/Functions/Examples/RegNonZeroPowerDerivativeCheck.mos" "Simulate and plot"),
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
     Documentation(info="<html>
 <p>
 This example checks whether the function derivative

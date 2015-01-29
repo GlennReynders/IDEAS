@@ -9,12 +9,12 @@ model Damper
     redeclare package Medium = Medium,
     m_flow_nominal=1,
     filteredOpening=false)
-         annotation (Placement(transformation(extent={{0,10},{20,30}}, rotation=
-           0)));
+         annotation (Placement(transformation(extent={{0,10},{20,30}})));
     Modelica.Blocks.Sources.Ramp yRam(
     duration=0.3,
     offset=0,
     startTime=0.2,
+<<<<<<< HEAD
     height=1)    annotation (Placement(transformation(extent={{-20,40},{0,60}},
           rotation=0)));
   IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium =
@@ -25,10 +25,21 @@ model Damper
         transformation(extent={{-68,10},{-48,30}}, rotation=0)));
   IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium =
         Medium,
+=======
+    height=1)    annotation (Placement(transformation(extent={{-20,40},{0,60}})));
+  IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium
+      = Medium,
+    nPorts=1,
+    p(displayUnit="Pa") = 101335,
+    T=293.15)                                       annotation (Placement(
+        transformation(extent={{-68,10},{-48,30}})));
+  IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium
+      = Medium,
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
     nPorts=1,
     p(displayUnit="Pa") = 101325,
     T=293.15)                                       annotation (Placement(
-        transformation(extent={{74,10},{54,30}}, rotation=0)));
+        transformation(extent={{74,10},{54,30}})));
 
 equation
   connect(yRam.y, res.y) annotation (Line(
@@ -43,10 +54,7 @@ equation
       points={{54,20},{20,20}},
       color={0,127,255},
       smooth=Smooth.None));
-    annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
-            -100},{100,100}}),
-                        graphics),
-experiment(StopTime=1.0),
+    annotation (experiment(StopTime=1.0),
 __Dymola_Commands(file="modelica://IDEAS/Resources/Scripts/Dymola/Fluid/Actuators/Dampers/Examples/Damper.mos"
         "Simulate and plot"),
 Documentation(info="<html>

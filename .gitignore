@@ -26,7 +26,6 @@
 /IDEAS backup
 !/Inputs/*.txt
 !/IDEAS/Resources/ReferenceResults/Dymola/*txt
-/IDEAS/dsin.txt
 /IDEAS/Resources/drawings.pptx
 /*.mm
-/Simulations
+/IDEAS/*.pyc

@@ -44,15 +44,15 @@ This block can be used to schedule a set-point by using piecewise linear functio
 For example, the instances
 </p>
 <pre>
-IDEAS.Controls.SetPoints.Table tabLinExt(constantExtrapolation=false, 
-                                             table=[20, 0.0; 
-                                                    22, 0.5; 
-                                                    25, 0.5; 
+IDEAS.Controls.SetPoints.Table tabLinExt(constantExtrapolation=false,
+                                             table=[20, 0.0;
+                                                    22, 0.5;
+                                                    25, 0.5;
                                                     26, 1.0]);
-IDEAS.Controls.SetPoints.Table tabConExt(constantExtrapolation=true, 
-                                             table=[20, 0.0; 
-                                                    22, 0.5; 
-                                                    25, 0.5; 
+IDEAS.Controls.SetPoints.Table tabConExt(constantExtrapolation=true,
+                                             table=[20, 0.0;
+                                                    22, 0.5;
+                                                    25, 0.5;
                                                     26, 1.0]);
 </pre>
 <p>
@@ -63,8 +63,8 @@ will cause the following output:
 </p>
 <p>
 For the default setting <code>constantExtrapolation=true</code>, the
-block outputs 
-<code>y=y1+offset</code> for <code>u &le; u1</code>, and 
+block outputs
+<code>y=y1+offset</code> for <code>u &le; u1</code>, and
 <code>y=yMax+offset</code> for <code>u &ge; uMax</code>.
 Otherwise, the table is linearly extrapolated with a constant derivative.
 </p>
@@ -84,7 +84,6 @@ First implementation.
 </li>
 </ul>
 </html>"),
-Diagram(graphics),
     Icon(graphics={
     Text(
       extent={{-78,-45},{-40,-56}},

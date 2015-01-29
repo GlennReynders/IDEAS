@@ -18,7 +18,7 @@ The polynomial has the form
 <p align=\"center\" style=\"font-style:italic;\">
   y = a<sub>1</sub> + a<sub>2</sub> x + a<sub>3</sub> x<sup>2</sup> + ...
 </p>
-</html>"),
+</html>",
 revisions="<html>
 <ul>
 <li>
@@ -34,7 +34,11 @@ February 29, 2009 by Michael Wetter:<br/>
 First implementation.
 </li>
 </ul>
+<<<<<<< HEAD
 </html>",
+=======
+</html>"),
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
 smoothOrder=999,
 derivative(zeroDerivative=a)=IDEAS.Utilities.Math.Functions.BaseClasses.der_polynomial);
 end polynomial;

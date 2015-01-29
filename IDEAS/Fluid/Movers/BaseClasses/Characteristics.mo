@@ -51,7 +51,7 @@ This record is identical to
 <a href=\"modelica://IDEAS.Fluid.Movers.BaseClasses.Characteristic.flowParameters\">
 IDEAS.Fluid.Movers.BaseClasses.Characteristic.flowParameters</a>,
 except that it takes the size of the array as a parameter. This is required
-in Dymola 2014. Otherwise, the array size would need to be computed in 
+in Dymola 2014. Otherwise, the array size would need to be computed in
 <a href=\"modelica://IDEAS.Fluid.Movers.BaseClasses.FlowMachineInterface\">
 IDEAS.Fluid.Movers.BaseClasses.FlowMachineInterface</a>
 in the <code>initial algorithm</code> section, which is not supported.
@@ -114,7 +114,7 @@ must have the same size.
 <ul>
 <li>
 October 10, 2012, by Michael Wetter:<br/>
-Fixed wrong <code>displayUnit</code> and 
+Fixed wrong <code>displayUnit</code> and
 <code>max</code> attribute for power.
 </li>
 <li>
@@ -128,8 +128,13 @@ First implementation.
   function pressure
     "Flow vs. head characteristics for fan or pump pressure raise"
     extends Modelica.Icons.Function;
+<<<<<<< HEAD
     input IDEAS.Fluid.Movers.BaseClasses.Characteristics.flowParametersInternal
                                                                                     data
+=======
+    input
+      IDEAS.Fluid.Movers.BaseClasses.Characteristics.flowParametersInternal       data
+>>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
       "Pressure performance data";
     input Modelica.SIunits.VolumeFlowRate V_flow "Volumetric flow rate";
     input Real r_N(unit="1") "Relative revolution, r_N=N/N_nominal";
@@ -230,9 +235,9 @@ The term
 &Delta;p<sub>r</sub> = V &nbsp; &Delta;p<sub>max</sub> &frasl; V<sub>max</sub> &nbsp; &delta;
 </p>
 <p>
-models the flow resistance of the fan, approximated using a linear equation. 
+models the flow resistance of the fan, approximated using a linear equation.
 This is done for numerical reasons to avoid a singularity at <i>r<sub>N</sub>=0</i>. Since <i>&delta;</i> is small, the contribution of this term is small.
-The fan and pump models in 
+The fan and pump models in
 <a href=\"modelica://IDEAS.Fluid.Movers\">
 IDEAS.Fluid.Movers</a> modify the user-supplied performance data to add the term
 <i>&Delta;p<sub>r</sub></i> prior to computing the performance curve.
@@ -241,7 +246,7 @@ Thus, at full speed, the fan or pump can operate exactly at the user-supplied pe
 <h4>Implementation</h4>
 <p>
 The function <i>s(&middot;, &middot;)</i> is a cubic hermite spline.
-If the data <i>d</i> define a monotone decreasing sequence, then 
+If the data <i>d</i> define a monotone decreasing sequence, then
 <i>s(&middot;, d)</i> is a monotone decreasing function.
 </p>
 <p>
@@ -256,7 +261,7 @@ August 25, 2011, by Michael Wetter:<br/>
 First implementation.
 </li>
 </ul>
-</html>"),     smoothOrder=1);
+</html>"));
   end pressure;
 
   function flowApproximationAtOrigin
@@ -276,7 +281,7 @@ First implementation.
 <p>
 This function computes the fan static
 pressure raise as a function of volume flow rate and revolution near the origin.
-It is used to avoid a singularity in the pump or fan curve if the revolution 
+It is used to avoid a singularity in the pump or fan curve if the revolution
 approaches zero.
 </p>
 </html>", revisions="<html>
@@ -346,7 +351,7 @@ where
 <h4>Implementation</h4>
 <p>
 The function <i>s(&middot;, &middot;)</i> is a cubic hermite spline.
-If the data <i>d</i> define a monotone decreasing sequence, then 
+If the data <i>d</i> define a monotone decreasing sequence, then
 <i>s(&middot;, d)</i> is a monotone decreasing function.
 </p>
 </html>", revisions="<html>
@@ -356,7 +361,7 @@ September 28, 2011, by Michael Wetter:<br/>
 First implementation.
 </li>
 </ul>
-</html>"),     smoothOrder=1);
+</html>"));
   end power;
 
   function efficiency "Flow vs. efficiency characteristics for fan or pump"
@@ -410,7 +415,7 @@ where
 <h4>Implementation</h4>
 <p>
 The function <i>s(&middot;, &middot;)</i> is a cubic hermite spline.
-If the data <i>d</i> define a monotone decreasing sequence, then 
+If the data <i>d</i> define a monotone decreasing sequence, then
 <i>s(&middot;, d)</i> is a monotone decreasing function.
 </p>
 </html>", revisions="<html>
@@ -420,7 +425,7 @@ September 28, 2011, by Michael Wetter:<br/>
 First implementation.
 </li>
 </ul>
-</html>"),     smoothOrder=1);
+</html>"));
   end efficiency;
 
   annotation (Documentation(info="<html>

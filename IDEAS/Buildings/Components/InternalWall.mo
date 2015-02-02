@@ -32,6 +32,7 @@ protected
         AWall, final inc=inc + Modelica.Constants.pi)
     "convective surface heat transimission on the interior side of the wall"
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
+public
   IDEAS.Buildings.Components.BaseClasses.MultiLayerOpaque layMul(
     final A=AWall,
     final inc=inc,
@@ -41,9 +42,10 @@ protected
     T_start=ones(constructionType.nLay)*T_start)
     "declaration of array of resistances and capacitances for wall simulation"
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+protected
   Modelica.Blocks.Sources.RealExpression QDesign(y=QTra_design)
     annotation (Placement(transformation(extent={{16,50},{36,70}})));
-public
+//public
   Interfaces.ZoneBus propsBus_b annotation (Placement(transformation(
         extent={{-20,20},{20,-20}},
         rotation=-90,

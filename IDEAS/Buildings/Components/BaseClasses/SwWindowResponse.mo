@@ -34,6 +34,7 @@ model SwWindowResponse "shortwave window respones"
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a iSolDif
     "transmitted difuse solar riadtion"
     annotation (Placement(transformation(extent={{10,-110},{30,-90}})));
+protected
   IDEAS.Buildings.Components.BaseClasses.AngleOfIncidence angDir
     "angle of incidence conversion"
     annotation (Placement(transformation(extent={{-58,-52},{-40,-34}})));

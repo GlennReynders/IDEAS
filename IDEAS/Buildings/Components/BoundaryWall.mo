@@ -28,7 +28,8 @@ model BoundaryWall "Opaque wall with boundary conditions"
   final parameter Modelica.SIunits.Power QTra_design=U_value*AWall*(273.15 + 21 - TRef)
     "Design heat losses at reference temperature of the boundary space";
 
-protected
+//protected
+
   IDEAS.Buildings.Components.BaseClasses.MultiLayerOpaque layMul(
     final A=AWall,
     final inc=inc,
@@ -38,6 +39,7 @@ protected
     T_start=ones(constructionType.nLay)*T_start)
     "declaration of array of resistances and capacitances for wall simulation"
     annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
+protected
   IDEAS.Buildings.Components.BaseClasses.InteriorConvection intCon_b(final A=
         AWall, final inc=inc)
     "convective surface heat transimission on the interior side of the wall"

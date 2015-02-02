@@ -17,7 +17,7 @@ public
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b port_b
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-
+protected
   MonoLayerOpaqueNf monoLayerOpaqueNf(A=A, mat=mat, inc=inc, T_start=T_start) if notFictive
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 equation

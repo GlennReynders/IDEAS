@@ -102,14 +102,15 @@ partial model Partial_HydraulicHeating "Hydraulic multi-zone heating "
     minSup=minSup,
     corFac_val=corFac_val,
     THeaterSet(start=293.15)) constrainedby
-    Controls.ControlHeating.Interfaces.Partial_Ctrl_Heating(
+    IDEAS.Controls.ControlHeating.Interfaces.Partial_Ctrl_Heating(
     heatingCurve(timeFilter=timeFilter),
     TSupNom=TSupNom,
     dTSupRetNom=dTSupRetNom)
     "Controller for the heater and the emission set point "
     annotation (Placement(transformation(extent={{-160,54},{-140,74}})));
-  replaceable IDEAS.Controls.Control_fixme.Hyst_NoEvent_Var[
-                                                nZones] heatingControl(each uLow_val=
+  replaceable Controls.Discrete.HysteresisRelease[             nZones] heatingControl(each uLow_val=
+        22, each uHigh_val=20) constrainedby
+    IDEAS.Controls.ControlHeating.Ctrl_Heating(                                       each uLow_val=
         22, each uHigh_val=20)
     "onoff controller for the pumps of the emission circuits"
     annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
@@ -187,7 +188,7 @@ equation
       color={191,0,0},
       smooth=Smooth.None));
   connect(pipeReturn.port_b, heater.port_a) annotation (Line(
-      points={{-18,-92},{-106,-92},{-106,17.4545},{-114,17.4545}},
+      points={{-18,-92},{-106,-92},{-106,16},{-114,16}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(pipeSupply.port_b, idealCtrlMixer.port_a1) annotation (Line(
@@ -195,7 +196,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(absolutePressure.ports[1], heater.port_a) annotation (Line(
-      points={{-106,-104},{-106,17.4545},{-114,17.4545}},
+      points={{-106,-104},{-106,16},{-114,16}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(emission.port_b, pipeReturnEmission.port_a) annotation (Line(
@@ -207,7 +208,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(TSet_max.y, ctrl_Heating.TRoo_in1) annotation (Line(
-      points={{-170,26.1},{-170,64},{-160.889,64}},
+      points={{-170,26.1},{-170,68},{-160,68}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(add.y, heatingControl.u) annotation (Line(
@@ -219,7 +220,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(heater.port_b, senTemHea_out.port_a) annotation (Line(
-      points={{-114,24.7273},{-112,24.7273},{-112,58},{-62,58}},
+      points={{-114,28},{-112,28},{-112,58},{-62,58}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(senTemHea_out.port_b, pipeSupply.port_a) annotation (Line(
@@ -231,15 +232,15 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(ctrl_Heating.THeaterSet, heater.TSet) annotation (Line(
-      points={{-139.556,64},{-125,64},{-125,32}},
+      points={{-141,65},{-128,65},{-128,34}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(THigh_val.y, heatingControl.uHigh) annotation (Line(
-      points={{-161.4,-52},{-152,-52},{-152,-63.2},{-142,-63.2}},
+      points={{-161.4,-52},{-152,-52},{-152,-74},{-142,-74}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(TLow_val.y, heatingControl.uLow) annotation (Line(
-      points={{-159.3,-92},{-152,-92},{-152,-77},{-142,-77}},
+      points={{-159.3,-92},{-152,-92},{-152,-78},{-142,-78}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(senTemEm_out.port_b, spl.port_1) annotation (Line(
@@ -263,11 +264,11 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(ctrl_Heating.THeaCur, idealCtrlMixer.TMixedSet) annotation (Line(
-      points={{-139.556,69},{-80,69},{-80,80},{45,80},{45,70}},
+      points={{-140,68},{-80,68},{-80,80},{45,80},{45,70}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(add.u2, TSet) annotation (Line(
-      points={{-175.4,-75.2},{-194,-75.2},{-194,-106},{20,-106}},
+      points={{-175.4,-75.2},{-194,-75.2},{-194,-104},{20,-104}},
       color={0,0,127},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,

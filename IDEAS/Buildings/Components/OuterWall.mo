@@ -24,13 +24,14 @@ model OuterWall "Opaque building envelope construction"
   Modelica.SIunits.Power QSolIrr = (radSol.solDir + radSol.solDif)
     "Total solar irradiance";
 
-//protected
+protected
   IDEAS.Climate.Meteo.Solar.RadSol radSol(
     final inc=inc,
     final azi=azi,
     final A=AWall)
     "determination of incident solar radiation on wall based on inclination and azimuth"
     annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
+public
   IDEAS.Buildings.Components.BaseClasses.MultiLayerOpaque layMul(
     final A=AWall,
     final inc=inc,
@@ -40,6 +41,7 @@ model OuterWall "Opaque building envelope construction"
     T_start=ones(constructionType.nLay)*T_start)
     "declaration of array of resistances and capacitances for wall simulation"
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+protected
   IDEAS.Buildings.Components.BaseClasses.ExteriorConvection extCon(final A=
         AWall)
     "convective surface heat transimission on the exterior side of the wall"

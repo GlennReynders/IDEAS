@@ -47,7 +47,7 @@ public
   Real Fc "cloud factor";
   Modelica.SIunits.Irradiance irr "Irradiance";
   Boolean summer;
-
+protected
   Real relHum(final unit="1") "Relative humidity";
   Modelica.SIunits.Temperature TDewPoi "Dewpoint";
 
@@ -90,7 +90,7 @@ protected
   Climate.Meteo.Solar.BaseClasses.SkyClearness
                skyClearness
     annotation (Placement(transformation(extent={{-78,70},{-60,88}})));
-public
+//public
   Climate.Meteo.Solar.BaseClasses.SkyBrightnessCoefficients
                             skyBrightnessCoefficients
     annotation (Placement(transformation(extent={{-18,60},{0,78}})));

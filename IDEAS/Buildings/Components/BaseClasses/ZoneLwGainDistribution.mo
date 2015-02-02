@@ -12,6 +12,7 @@ model ZoneLwGainDistribution "distribution of radiative internal gains"
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a radGain
     "longwave internal gains"
     annotation (Placement(transformation(extent={{-110,-48},{-90,-28}})));
+protected
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b[nSurf] radSurfTot
     "total recieved radiation by surface"
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));

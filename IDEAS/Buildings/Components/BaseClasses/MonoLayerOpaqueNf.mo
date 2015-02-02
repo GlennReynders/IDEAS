@@ -21,6 +21,7 @@ public
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b port_b
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+protected
   Modelica.SIunits.Temperature[nSta] T(start=ones(nSta)*T_start)
     "Temperature at the states";
   Modelica.SIunits.HeatFlowRate[nFlo] Q_flow

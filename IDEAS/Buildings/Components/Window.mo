@@ -66,6 +66,7 @@ protected
         *(1 - frac), final inc=inc)
     "determination of radiant heat exchange with the environment and sky"
     annotation (Placement(transformation(extent={{-20,-20},{-40,0}})));
+public
   IDEAS.Buildings.Components.BaseClasses.SwWindowResponse solWin(
     final nLay=glazing.nLay,
     final SwAbs=glazing.SwAbs,
@@ -73,7 +74,7 @@ protected
     final SwTransDif=glazing.SwTransDif,
     final SwAbsDif=glazing.SwAbsDif)
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
-
+protected
   IDEAS.Buildings.Components.BaseClasses.InteriorConvection iConFra(A=A*frac,
       inc=inc) if fraType.present
     "convective surface heat transimission on the interior side of the wall"

@@ -23,15 +23,17 @@ model Building
     constrainedby IDEAS.Interfaces.BaseClasses.Occupant(nZones=building.nZones)
     "Building occupant" annotation (Placement(transformation(extent={{-20,-40},
             {20,-20}})), choicesAllMatching=true);
-  replaceable IDEAS.Interfaces.BaseClasses.CausalInhomeFeeder inHomeGrid constrainedby
-    IDEAS.Interfaces.BaseClasses.CausalInhomeFeeder
-    "Inhome low-voltage electricity grid system" annotation (Placement(
-        transformation(extent={{32,-10},{52,10}})), __Dymola_choicesAllMatching=true);
 
   replaceable IDEAS.Interfaces.BaseClasses.VentilationSystem ventilationSystem(
       nZones=building.nZones, VZones=building.VZones) "Ventilation system"
     annotation (Placement(transformation(extent={{-20,20},{20,40}})),
       choicesAllMatching=true);
+protected
+ replaceable IDEAS.Interfaces.BaseClasses.CausalInhomeFeeder inHomeGrid constrainedby
+    IDEAS.Interfaces.BaseClasses.CausalInhomeFeeder
+    "Inhome low-voltage electricity grid system" annotation (Placement(
+        transformation(extent={{32,-10},{52,10}})), __Dymola_choicesAllMatching=true);
+
   Modelica.Electrical.QuasiStationary.SinglePhase.Interfaces.PositivePin
     plugFeeder(v(re(start=230), im(start=0))) if not standAlone
     "Electricity connection to the district feeder"

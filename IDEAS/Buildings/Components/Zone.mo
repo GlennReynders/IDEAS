@@ -35,13 +35,13 @@ model Zone "thermal building zone"
   Modelica.SIunits.Temperature TAir=senTem.T;
   Modelica.SIunits.Temperature TStar=radDistr.TRad;
 
-protected
   IDEAS.Buildings.Components.BaseClasses.ZoneLwGainDistribution radDistr(final
       nSurf=nSurf) "distribution of radiative internal gains" annotation (
       Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=-90,
         origin={-54,-44})));
+protected
   BaseClasses.AirLeakage airLeakage(
     redeclare package Medium = Medium,
     m_flow_nominal=V/3600*n50/20,
@@ -50,6 +50,7 @@ protected
     allowFlowReversal=allowFlowReversal,
     show_T=false)
     annotation (Placement(transformation(extent={{40,30},{60,50}})));
+
   IDEAS.Buildings.Components.BaseClasses.ZoneLwDistribution radDistrLw(final
       nSurf=nSurf, final linear=linear)
     "internal longwave radiative heat exchange" annotation (Placement(

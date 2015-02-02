@@ -4,7 +4,7 @@ partial model Structure "Partial model for building structure models"
   outer IDEAS.SimInfoManager sim
     "Simulation information manager for climate data"
     annotation (Placement(transformation(extent={{130,-100},{150,-80}})));
-
+protected
   replaceable package Medium = IDEAS.Media.Air
     constrainedby Modelica.Media.Interfaces.PartialMedium
     "Medium in the component"
@@ -44,9 +44,11 @@ partial model Structure "Partial model for building structure models"
     "Construction nodes for heat gains by embedded layers" annotation (
       Placement(transformation(extent={{140,50},{160,70}}), iconTransformation(
           extent={{140,50},{160,70}})));
+public
   Modelica.Blocks.Interfaces.RealOutput[nZones] TSensor(final quantity="ThermodynamicTemperature",unit="K",displayUnit="degC", min=0)
     "Sensor temperature of the zones"
     annotation (Placement(transformation(extent={{146,-70},{166,-50}})));
+protected
   Fluid.Interfaces.FlowPort_b[nZones] flowPort_Out(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-30,90},{-10,110}})));
   Fluid.Interfaces.FlowPort_a[nZones] flowPort_In(redeclare package Medium = Medium)

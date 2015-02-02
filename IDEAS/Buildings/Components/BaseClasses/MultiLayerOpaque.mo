@@ -10,7 +10,7 @@ model MultiLayerOpaque "multiple material layers in series"
 
   parameter Modelica.SIunits.Temperature T_start[nLay]=ones(nLay)*293.15
     "Start temperature for each of the layers";
-
+protected
   IDEAS.Buildings.Components.BaseClasses.MonoLayerOpaque[nLay] nMat(
     each final A=A,
     each final inc=inc,
@@ -18,7 +18,7 @@ model MultiLayerOpaque "multiple material layers in series"
     final mat=mats) "layers";
 
   final parameter Real R=sum(nMat.R) "total specific thermal resistance";
-
+public
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a port_gain
     "port for gains by embedded active layers"
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
@@ -26,6 +26,7 @@ model MultiLayerOpaque "multiple material layers in series"
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b port_b(T(start=289.15))
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+protected
   Modelica.Blocks.Interfaces.RealOutput iEpsLw_b
     "output of the interior emissivity for radiative heat losses"
     annotation (Placement(transformation(extent={{90,70},{110,90}})));

@@ -20,7 +20,7 @@ model SlabOnGround "opaque floor on ground slab"
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
 //Calculation of heat loss based on ISO 13370
-protected
+//protected
   final parameter IDEAS.Buildings.Data.Materials.Ground ground1(final d=0.50);
   final parameter IDEAS.Buildings.Data.Materials.Ground ground2(final d=0.33);
   final parameter IDEAS.Buildings.Data.Materials.Ground ground3(final d=0.17);
@@ -39,7 +39,7 @@ protected
   final parameter Real delta=sqrt(3.15*10^7*ground1.k/3.14/ground1.rho/ground1.c);
   final parameter Real Lpi=AWall*ground1.k/dt*sqrt(1/((1 + delta/dt)^2 + 1));
   final parameter Real Lpe=0.37*PWall*ground1.k*log(delta/dt + 1);
-  Real m=12*time/31536000;
+  Real m=7;
 
   //protected
 public

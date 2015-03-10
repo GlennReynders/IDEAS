@@ -5,7 +5,7 @@ partial model StateWallNoSol
   parameter Modelica.SIunits.Length insulationThickness
     "Thermal insulation thickness"
     annotation (Dialog(group="Construction details"));
-protected
+//protected
   replaceable IDEAS.Buildings.Data.Constructions.CavityWall constructionType
     constrainedby Data.Interfaces.Construction(final insulationType=
         insulationType, final insulationTickness=insulationThickness)

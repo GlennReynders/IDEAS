@@ -4,7 +4,7 @@ partial model StateWall "Partial model for building envelope components"
   outer IDEAS.SimInfoManager sim
     "Simulation information manager for climate data"
     annotation (Placement(transformation(extent={{30,-100},{50,-80}})));
-protected
+//protected
   ZoneBus propsBus_a annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,

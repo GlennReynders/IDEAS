@@ -42,7 +42,7 @@ public
     T_start=ones(constructionType.nLay)*T_start)
     "declaration of array of resistances and capacitances for wall simulation"
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
-protected
+//protected
   Modelica.Blocks.Sources.RealExpression QDesign(y=QTra_design)
     annotation (Placement(transformation(extent={{16,50},{36,70}})));
 //public

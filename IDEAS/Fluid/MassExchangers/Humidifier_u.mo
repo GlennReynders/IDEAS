@@ -2,7 +2,8 @@ within IDEAS.Fluid.MassExchangers;
 model Humidifier_u
   "Ideal humidifier or dehumidifier with prescribed water mass flow rate addition or subtraction"
   extends IDEAS.Fluid.Interfaces.TwoPortHeatMassExchanger(
-    redeclare replaceable package Medium = Modelica.Media.Interfaces.PartialCondensingGases,
+    redeclare replaceable package Medium =
+        Modelica.Media.Interfaces.PartialCondensingGases,
     redeclare final IDEAS.Fluid.MixingVolumes.MixingVolumeMoistAir vol);
 
   parameter Boolean use_T_in= false

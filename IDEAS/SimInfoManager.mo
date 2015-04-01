@@ -1,7 +1,7 @@
 within IDEAS;
 model SimInfoManager
   "Simulation information manager for handling time and climate data required in each for simulation."
-  extends PartialSimInfoManager(final useTmy3Reader = true);
+  extends Examples.PartialSimInfoManager_Twinhouse(final useTmy3Reader = true);
 
 equation
   solDirPer=weaDat.cheDirNorRad.HOut;

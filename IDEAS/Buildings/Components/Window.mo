@@ -40,7 +40,6 @@ model Window "Multipane window"
         rotation=-90,
         origin={-30,-100})));
 
-protected
   IDEAS.Climate.Meteo.Solar.ShadedRadSol radSol(
     final inc=inc,
     final azi=azi,
@@ -54,6 +53,7 @@ protected
     final mats=glazing.mats)
     "declaration of array of resistances and capacitances for wall simulation"
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+protected
   IDEAS.Buildings.Components.BaseClasses.ExteriorConvection eCon(final A=A*(1
          - frac))
     "convective surface heat transimission on the exterior side of the wall"

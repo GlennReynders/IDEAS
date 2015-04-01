@@ -2,7 +2,6 @@ within IDEAS.Electric.Photovoltaics.Extern;
 model PvSystem
   "PV system with separate shut-down controller and plug connector"
 
-
   parameter Modelica.SIunits.Power PNom "Nominal power, in Wp";
   parameter Integer id=19
     "Which photovoltaic from the read profiles in the SimInfoManager";

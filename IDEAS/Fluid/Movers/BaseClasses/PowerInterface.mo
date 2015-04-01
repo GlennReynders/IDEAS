@@ -14,15 +14,13 @@ partial model PowerInterface
   parameter Boolean homotopyInitialization = true "= true, use homotopy method"
     annotation(Evaluate=true, Dialog(tab="Advanced"));
 
-  parameter
-    IDEAS.Fluid.Movers.BaseClasses.Characteristics.efficiencyParameters
+  parameter IDEAS.Fluid.Movers.BaseClasses.Characteristics.efficiencyParameters
       motorEfficiency(r_V={1}, eta={0.7})
     "Normalized volume flow rate vs. efficiency"
     annotation(Placement(transformation(extent={{60,-40},{80,-20}})),
                Dialog(group="Characteristics",
                enable = not use_powerCharacteristic));
-  parameter
-    IDEAS.Fluid.Movers.BaseClasses.Characteristics.efficiencyParameters
+  parameter IDEAS.Fluid.Movers.BaseClasses.Characteristics.efficiencyParameters
       hydraulicEfficiency(r_V={1}, eta={0.7})
     "Normalized volume flow rate vs. efficiency"
     annotation(Placement(transformation(extent={{60,-80},{80,-60}})),

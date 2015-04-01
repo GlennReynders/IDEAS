@@ -3,7 +3,7 @@ partial model PartialSimInfoManager_Twinhouse
   "Partial providing structure for SimInfoManager Twinhouse"
   parameter String filDir = "../Inputs/"
     "Directory containing the weather data file, default under IDEAS/Inputs/";
-  parameter String filNam = "weatherdataTwinExp2new.TMY"
+  parameter String filNam = "weatherdataTwinExp2new.txt"
     "Name of weather data file"
     annotation(Dialog(enable=useTmy3Reader));
   parameter Modelica.SIunits.Angle lat(displayUnit="deg") = 0.835135

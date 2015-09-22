@@ -12,23 +12,14 @@ model FixedResistancesSeries "Test of multiple resistances in series"
       duration=1,
     height=2*dp_nominal*nRes,
     offset=101325 - dp_nominal*nRes)
-<<<<<<< HEAD
-                 annotation (Placement(transformation(extent={{-80,60},{-60,80}},
-          rotation=0)));
-=======
                  annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
-  IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium =
-               Medium, T=273.15 + 20,
+  IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium
+      =        Medium, T=273.15 + 20,
     use_p_in=true,
     nPorts=1)                         annotation (Placement(transformation(
-<<<<<<< HEAD
-          extent={{-40,20},{-20,40}}, rotation=0)));
-=======
           extent={{-40,20},{-20,40}})));
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
-  IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium =
-               Medium, T=273.15 + 10,
+  IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium
+      =        Medium, T=273.15 + 10,
     use_p_in=true,
     nPorts=1)                         annotation (Placement(transformation(
           extent={{56,20},{36,40}})));

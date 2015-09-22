@@ -3,7 +3,7 @@ model ValveParameterization
   "Model to test and illustrate different parameterization for valves"
   extends Modelica.Icons.Example;
 
- package Medium = IDEAS.Media.Water.Simple;
+ package Medium = IDEAS.Media.Water;
 
   IDEAS.Fluid.Actuators.Valves.TwoWayLinear valOPPoi(
     redeclare package Medium = Medium,
@@ -13,32 +13,19 @@ model ValveParameterization
     filteredOpening=false) "Valve model, linear opening characteristics"
          annotation (Placement(transformation(extent={{-10,30},{10,50}})));
     Modelica.Blocks.Sources.Constant y(k=1) "Control signal"
-<<<<<<< HEAD
-                 annotation (Placement(transformation(extent={{-60,60},{-40,80}},
-          rotation=0)));
-  IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium =
-        Medium,
-    use_p_in=true,
-    nPorts=3,
-    T=293.15)                                       annotation (Placement(
-        transformation(extent={{-70,-10},{-50,10}},rotation=0)));
-  IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium =
-        Medium,
-=======
                  annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
   IDEAS.Fluid.Sources.Boundary_pT sou(             redeclare package Medium
       = Medium,
     use_p_in=true,
     nPorts=3,
-    T=293.15)                                       annotation (Placement(
+    T=293.15) "Boundary condition for flow source"  annotation (Placement(
         transformation(extent={{-70,-10},{-50,10}})));
   IDEAS.Fluid.Sources.Boundary_pT sin(             redeclare package Medium
       = Medium,
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
     nPorts=3,
     use_p_in=false,
     p=300000,
-    T=293.15)                                       annotation (Placement(
+    T=293.15) "Boundary condition for flow sink"    annotation (Placement(
         transformation(extent={{90,-10},{70,10}})));
     Modelica.Blocks.Sources.Ramp PSou(
     duration=1,
@@ -59,17 +46,9 @@ model ValveParameterization
     CvData=IDEAS.Fluid.Types.CvTypes.Cv,
     Cv=0.84,
     filteredOpening=false) "Valve model, linear opening characteristics"
-<<<<<<< HEAD
-         annotation (Placement(transformation(extent={{-10,-50},{10,-30}},
-                                                                       rotation=
-           0)));
+         annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowOpPoi(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{20,30},{40,50}})));
-=======
-         annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
-  IDEAS.Fluid.Sensors.MassFlowRate senM_flowOpPoi(redeclare package Medium
-      = Medium) annotation (Placement(transformation(extent={{20,30},{40,50}})));
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowKv(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   IDEAS.Fluid.Sensors.MassFlowRate senM_flowCv(redeclare package Medium =
@@ -83,15 +62,13 @@ equation
   connect(y.y, valOPPoi.y)
                          annotation (Line(
       points={{-39,70},{-20,70},{6.66134e-16,70},{6.66134e-16,52}},
-      color={0,0,127},
-      pattern=LinePattern.None));
+      color={0,0,127}));
   connect(PSou.y, sou.p_in)
     annotation (Line(points={{-79,26},{-74.5,26},{-74.5,8},{-72,8}},
                                                  color={0,0,127}));
   connect(y.y, valKv.y)  annotation (Line(
       points={{-39,70},{-20,70},{-20,20},{6.66134e-16,20},{6.66134e-16,12}},
-      color={0,0,127},
-      pattern=LinePattern.None));
+      color={0,0,127}));
   connect(valKv.port_a, sou.ports[2])  annotation (Line(
       points={{-10,6.10623e-16},{-30,6.10623e-16},{-30,5.55112e-16},{-50,5.55112e-16}},
       color={0,127,255},

@@ -10,6 +10,6 @@ This package contains functions for psychrometric calculations.
 
 The nomenclature used in this package is described at
 <a href=\"modelica://IDEAS.UsersGuide.Conventions\">
-Buildings.UsersGuide.Conventions</a>.
+IDEAS.UsersGuide.Conventions</a>.
 </html>"));
 end Functions;

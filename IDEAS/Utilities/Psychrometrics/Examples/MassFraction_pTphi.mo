@@ -3,18 +3,14 @@ model MassFraction_pTphi "Unit test for dew point temperature calculation"
   extends Modelica.Icons.Example;
 
    package Medium1 = IDEAS.Media.Air "Medium model";
-   package Medium2 = IDEAS.Media.GasesPTDecoupled.MoistAir "Medium model";
+   package Medium2 = IDEAS.Media.Air "Medium model";
     Modelica.Blocks.Sources.Ramp Phi(
     offset=0,
     duration=0.5,
     height=1) "Relative humidity"
-<<<<<<< HEAD
-                 annotation (Placement(transformation(extent={{-80,-60},{-60,-40}},
-                   rotation=0)));
-=======
                  annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
-  IDEAS.Utilities.Psychrometrics.X_pTphi masFra1 "Mass fraction computation"
+  IDEAS.Utilities.Psychrometrics.X_pTphi masFra1
+    "Mass fraction computation"
     annotation (Placement(transformation(extent={{-20,0},{0,20}})));
     Modelica.Blocks.Sources.Ramp T(
     height=10,

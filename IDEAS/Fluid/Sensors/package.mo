@@ -1,11 +1,6 @@
 within IDEAS.Fluid;
 package Sensors "Package with sensor models"
   extends Modelica.Icons.SensorsPackage;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 3a3ad755c4e719df755a0cefcde2982c8c92c6f0
 annotation (preferredView="info",
 Documentation(info="<html>
 <p>

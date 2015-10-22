@@ -2,15 +2,21 @@ within IDEAS.Buildings.Data.Interfaces;
 record Material "Properties of building materials"
 
   extends Modelica.Icons.MaterialProperty;
-
+ parameter Boolean PCM = false "Boolean whether the material is a PCM";
   parameter Modelica.SIunits.Length d=0 "Layer thickness";
   parameter Modelica.SIunits.ThermalConductivity k "Thermal conductivity";
   parameter Modelica.SIunits.SpecificHeatCapacity c "Specific thermal capacity";
+  parameter Modelica.SIunits.SpecificHeatCapacity cs=0
+    "if PCM Specific thermal capacity solid phase";
+  parameter Modelica.SIunits.SpecificHeatCapacity cl=0
+    "if PCM Specific thermal capacity liquid phase";
+
   parameter Modelica.SIunits.Density rho "Density";
   parameter Modelica.SIunits.Emissivity epsLw = 0.85 "Longwave emisivity";
   parameter Modelica.SIunits.Emissivity epsSw = 0.85 "Shortwave emissivity";
   parameter Boolean gas=false "Boolean whether the material is a gas"
     annotation(Evaluate=true);
+
   parameter Modelica.SIunits.KinematicViscosity mhu = 0
     "Viscosity, i.e. if the material is a fluid";
 
@@ -37,6 +43,9 @@ record Material "Properties of building materials"
   final parameter Integer nSta(min=1) = max(1, integer(ceil(nStaRef*piLay/piRef)))
     "Actual number of state variables in material";
 
+    parameter Modelica.SIunits.Temperature     T1= 0 "upper melt temperature";
+  parameter Modelica.SIunits.Temperature T0=0 "lower melt temperature";
+   parameter Modelica.SIunits.SpecificEnthalpy hlat=0 "latent heat [J/kg]";
   annotation (Documentation(info="<html>
 <p><h4><font color=\"#008000\">General description</font></h4></p>
 <p><h5>Goal</h5></p>

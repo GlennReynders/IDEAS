@@ -3,7 +3,7 @@ model PartialPumpCircuit
 
   // Extensions ----------------------------------------------------------------
 
-  extends PartialFlowCircuit(redeclare Movers.BaseClasses.PartialFlowMachine
+  extends PartialFlowCircuit(redeclare Movers.BaseClasses.FlowControlled
       flowRegulator(
         tau=tauPump,
         energyDynamics=energyDynamics,

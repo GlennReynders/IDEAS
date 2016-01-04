@@ -13,7 +13,7 @@ model PumpSupply_dp
     annotation(Dialog(tab="Dynamics", group="Filtered speed",enable=filteredSpeed));
 
   //Extensions
-  extends Interfaces.PartialPumpCircuit(redeclare Movers.FlowMachine_dp
+  extends Interfaces.PartialPumpCircuit(redeclare Movers.FlowControlled_dp
       flowRegulator(
       filteredSpeed=filteredSpeed,
       riseTime=riseTime,
@@ -21,7 +21,9 @@ model PumpSupply_dp
       massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
       motorCooledByFluid=false,
       addPowerToMedium=false,
-      allowFlowReversal=true),                  final useBalancingValve=true,
+      allowFlowReversal=true,
+      redeclare IDEAS.Fluid.Movers.Data.FlowControlled per,
+      use_powerCharacteristic=false),           final useBalancingValve=true,
     balancingValve(show_T=true));
 
 equation

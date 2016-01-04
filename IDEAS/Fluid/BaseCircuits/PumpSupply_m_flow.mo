@@ -13,14 +13,13 @@ model PumpSupply_m_flow "Pump on supply duct"
     annotation(Dialog(tab="Dynamics", group="Filtered speed",enable=filteredSpeed));
 
   //Extensions
-  extends Interfaces.PartialPumpCircuit(redeclare Movers.FlowMachine_m_flow
+  extends Interfaces.PartialPumpCircuit(redeclare Movers.FlowControlled_m_flow
       flowRegulator(
         filteredSpeed=filteredSpeed,
         riseTime=riseTime,
         init=init,
         motorCooledByFluid=motorCooledByFluid,
-        motorEfficiency=motorEfficiency,
-        hydraulicEfficiency=hydraulicEfficiency));
+      redeclare IDEAS.Fluid.Movers.Data.FlowControlled per));
 
 equation
   connect(u, flowRegulator.m_flow_in) annotation (Line(
@@ -33,7 +32,7 @@ equation
       smooth=Smooth.None));
     annotation(Dialog(group="Pump parameters"),
               Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Documentation(
+            -100},{100,100}})),           Documentation(
             info="<html><p>
             This model is the base circuit implementation of a mass-flow controlled pump and makes use of <a href=\"modelica://IDEAS.Fluid.Movers.FlowMachine_m_flow\">IDEAS.Fluid.Movers.FlowMachine_m_flow</a>.
 </p></html>",

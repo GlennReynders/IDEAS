@@ -4,6 +4,7 @@ class PvArray
   parameter Real amount=2;
   parameter Real inc=34 "inclination";
   parameter Real azi=0 "azimuth";
+  parameter Real lat= 50.800/180*Modelica.Constants.pi "latitude";
   replaceable parameter IDEAS.Electric.Data.Interfaces.PvPanel pvPanel
     "Choose a Photovoltaic panel to be used"
     annotation (choicesAllMatching=true);
@@ -12,7 +13,8 @@ class PvArray
   IDEAS.Climate.Meteo.Solar.RadSol radSol(
     azi=azi,
     inc=inc,
-    A=1) annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
+    lat=lat)
+      annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
   IDEAS.Electric.Photovoltaics.Components.Elements.refraction refDir
     annotation (Placement(transformation(extent={{-8,20},{12,40}})));
   IDEAS.Electric.Photovoltaics.Components.Elements.refraction refDif
@@ -61,12 +63,12 @@ equation
       points={{12,-10},{18,-10},{18,28},{22,28}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(radSol.solDir, absorption.solDir) annotation (Line(
-      points={{-80,60},{34,60},{34,40}},
+  connect(radSol.solBus.iSolDir, absorption.solDir) annotation (Line(
+      points={{-80,54},{34,54},{34,40}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(radSol.solDif, absorption.solDif) annotation (Line(
-      points={{-80,56},{38,56},{38,40}},
+  connect(radSol.solBus.iSolDif, absorption.solDif) annotation (Line(
+      points={{-80,54},{38,54},{38,40}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(absorption.solAbs, PV5.solAbs) annotation (Line(
@@ -89,20 +91,20 @@ equation
       points={{-59.6,40},{-50,40},{-50,36},{-38,36}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(radSol.angInc, cos.u) annotation (Line(
-      points={{-80,50},{-72,50},{-72,40},{-68.8,40}},
+  connect(radSol.solBus.angInc, cos.u) annotation (Line(
+      points={{-80,54},{-72,54},{-72,40},{-68.8,40}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(cos1.y, incidenceAngles.angZen) annotation (Line(
       points={{-59.6,28},{-50,28},{-50,32},{-38,32}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(radSol.angZen, cos1.u) annotation (Line(
-      points={{-80,48},{-74,48},{-74,28},{-68.8,28}},
+  connect(radSol.solBus.angZen, cos1.u) annotation (Line(
+      points={{-80,54},{-74,54},{-74,28},{-68.8,28}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(radSol.angHou, cos2.u) annotation (Line(
-      points={{-80,46},{-76,46},{-76,16},{-68.8,16}},
+  connect(radSol.angSolar.angHou, cos2.u) annotation (Line(
+      points={{-100,62},{-76,62},{-76,16},{-68.8,16}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(cos2.y, incidenceAngles.angHou) annotation (Line(
@@ -111,6 +113,10 @@ equation
       smooth=Smooth.None));
 
   //Ground reflectantance is not used for now (see Absorption model => SolAbs equation!
+  connect(sim.weaBus, radSol.weaBus) annotation (Line(
+      points={{-88.6,97.2},{-110,97.2},{-110,62},{-100,62}},
+      color={255,204,51},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,
             -100},{100,100}}),
                          graphics={
@@ -160,5 +166,6 @@ equation
           smooth=Smooth.None,
           fillColor={85,170,255},
           fillPattern=FillPattern.Solid)}),
-                             Diagram(graphics));
+                             Diagram(coordinateSystem(preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}})));
 end PvArray;

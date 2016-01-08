@@ -16,7 +16,7 @@ model RadSol "solar angle to surface"
                                          solBus
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-protected
+//protected
   BaseClasses.AngleSolar angSolar(
     inc=inc,
     azi=azi,
@@ -109,8 +109,7 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),
-                      graphics), Icon(graphics={
+            -100},{100,100}})),  Icon(graphics={
         Polygon(
           points={{-90,-80},{-40,-40},{40,-40},{90,-80},{-90,-80}},
           lineColor={95,95,95},

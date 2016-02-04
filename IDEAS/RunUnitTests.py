@@ -55,9 +55,9 @@ def _setEnvironmentVariables(var, value):
 
 def _runUnitTests():
     import buildingspy.development.regressiontest as u
-    ut = u.Tester(check_html=True)
+    ut = u.Tester(checkHtml=False)
     ut.batchMode(batch)
-#    ut.setNumberOfThreads(1)
+    ut.setNumberOfThreads(1)
 #    ut.deleteTemporaryDirectories(False)
 #    ut.useExistingResults(['/tmp/tmp-Buildings-0-fagmeZ'])
 #    #print ut.getDataDictionary()

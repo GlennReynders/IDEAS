@@ -37,7 +37,7 @@ partial model PartialSurface "Partial model for building envelope component"
         extent={{-20,-20},{20,20}},
         rotation=-90,
         origin={50,40})));
-
+protected
   BaseClasses.InteriorConvection intCon_a(
     linearise=linearise_a,
     dT_nominal=dT_nominal_a,
@@ -61,7 +61,7 @@ protected
      sim.computeConservationOfEnergy
     "Component for computing conservation of energy";
 
-protected
+public
   IDEAS.Buildings.Components.BaseClasses.MultiLayer layMul(final inc=inc)
     "Multilayer component that allows simulating walls, windows and other surfaces"
     annotation (Placement(transformation(extent={{10,-10},{-10,10}})));

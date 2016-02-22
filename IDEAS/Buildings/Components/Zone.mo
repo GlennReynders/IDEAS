@@ -1,6 +1,7 @@
 within IDEAS.Buildings.Components;
 model Zone "thermal building zone"
   extends IDEAS.Buildings.Components.Interfaces.StateZone(Eexpr(y=E));
+protected
   extends IDEAS.Fluid.Interfaces.LumpedVolumeDeclarations(
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     redeclare replaceable package Medium = IDEAS.Media.Air,

@@ -5,7 +5,7 @@ model SlabOnGround "opaque floor on ground slab"
      QTra_design=UEqui*AWall*(273.15 + 21 - sim.Tdes), layMul(
         placeCapacityAtSurf_b=false),
         dT_nominal_a=-3);
-
+protected
   parameter Modelica.SIunits.Length PWall = 4*sqrt(AWall)
     "Total wall perimeter";
   parameter Modelica.SIunits.Temperature TeAvg = 273.15+10.8

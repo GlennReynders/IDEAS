@@ -1,7 +1,7 @@
 within IDEAS.Buildings.Components.Interfaces;
 partial model PartialOpaqueSurface
   "Partial component for the opaque surfaces of the building envelope"
-
+protected
   replaceable IDEAS.Buildings.Data.Constructions.CavityWall constructionType
     constrainedby Data.Constructions.CavityWall(final insulationType=
         insulationType, final insulationTickness=insulationThickness)
@@ -9,6 +9,7 @@ partial model PartialOpaqueSurface
     __Dymola_choicesAllMatching=true,
     Placement(transformation(extent={{-34,78},{-30,82}})),
     Dialog(group="Construction details"));
+public
   extends IDEAS.Buildings.Components.Interfaces.PartialSurface(
     E(y=layMul.E),
     Qgai(y=layMul.port_b.Q_flow + (if sim.openSystemConservationOfEnergy
@@ -19,7 +20,7 @@ partial model PartialOpaqueSurface
       final mats=constructionType.mats,
       T_start=ones(constructionType.nLay)*T_start,
       nGain=constructionType.nGain));
-
+protected
   parameter Modelica.SIunits.Area AWall "Total wall area";
 
   parameter Modelica.SIunits.Length insulationThickness

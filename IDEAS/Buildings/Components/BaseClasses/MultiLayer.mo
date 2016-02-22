@@ -1,6 +1,6 @@
 within IDEAS.Buildings.Components.BaseClasses;
 model MultiLayer "multiple material layers in series"
-
+protected
   parameter Modelica.SIunits.Area A "total multilayer area";
   parameter Modelica.SIunits.Angle inc
     "Inclinination angle of the multilayer at port_a";
@@ -47,7 +47,7 @@ model MultiLayer "multiple material layers in series"
     each final energyDynamics=energyDynamics,
     each dT_nom_air=dT_nom_air) "Individual layers"
     annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
-
+public
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a port_gain[nLay]
     "port for gains by embedded active layers"
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
@@ -55,6 +55,7 @@ model MultiLayer "multiple material layers in series"
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b port_b(T(start=289.15))
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+protected
   Modelica.Blocks.Interfaces.RealOutput iEpsLw_b
     "output of the interior emissivity for radiative heat losses"
     annotation (Placement(transformation(extent={{90,70},{110,90}})));

@@ -20,7 +20,7 @@ model Window "Multipane window"
       energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
       dT_nom_air=5,
       linIntCon=true));
-
+protected
    parameter Modelica.SIunits.Area A "Total window and windowframe area";
    parameter Real frac(
     min=0,
@@ -45,6 +45,7 @@ model Window "Multipane window"
         extent={{10,-10},{-10,10}},
         rotation=-90,
         origin={-40,-100})));
+public
   parameter IDEAS.Buildings.Components.BaseClasses.WindowDynamicsType
     windowDynamicsType = IDEAS.Buildings.Components.BaseClasses.WindowDynamicsType.Two
     "Type of dynamics for glazing and frame: using zero, one combined or two states"

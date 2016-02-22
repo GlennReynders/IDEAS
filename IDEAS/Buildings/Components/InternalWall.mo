@@ -6,7 +6,7 @@ model InternalWall "interior opaque wall between two zones"
   Qgai(y=(if sim.openSystemConservationOfEnergy
          then 0 else sum(port_emb.Q_flow))),
   final QTra_design=U_value*AWall*(TRef_a - TRef_b));
-
+protected
   parameter Boolean linearise_b=false
     "= true, if convective heat transfer should be linearised"
     annotation(Dialog(tab="Convection"));

@@ -1,6 +1,7 @@
 within IDEAS;
 partial model PartialSimInfoManager
   "Partial providing structure for SimInfoManager"
+protected
   parameter String filDir = Modelica.Utilities.Files.loadResource("modelica://IDEAS") + "/Inputs/"
     "Directory containing the weather data file, default under IDEAS/Inputs/";
   parameter String filNam = "Uccle.TMY" "Name of weather data file"
@@ -53,6 +54,7 @@ public
   Modelica.SIunits.Irradiance solGloHor "global irradiation on horizontal";
   Modelica.SIunits.Temperature Te
     "ambient outdoor temperature for determination of sky radiation exchange";
+protected
   Modelica.SIunits.Temperature Tsky "effective overall sky temperature";
   Modelica.SIunits.Temperature TeAv
     "running average of ambient outdoor temperature of the last 5 days, not yet implemented";
@@ -125,7 +127,6 @@ protected
   Modelica.Blocks.Sources.RealExpression solDifHorIn(y=solDifHor)
     annotation (Placement(transformation(extent={{-110,62},{-90,82}})));
 
-public
   Modelica.Blocks.Sources.RealExpression hour(y=angHou) "Hour angle"
     annotation (Placement(transformation(extent={{-110,90},{-90,110}})));
   Modelica.Blocks.Sources.RealExpression dec(y=angDec) "declination angle"
@@ -138,7 +139,7 @@ protected
       1,
       fill(ceilingInc,1),
       fill(IDEAS.Constants.Wall, numAzi)) "surface inclination";
-public
+//public
   Buildings.Components.Interfaces.WeaBus
                                      weaBus(numSolBus=numAzi + 1)
     annotation (Placement(transformation(extent={{4,62},{24,82}})));
@@ -152,7 +153,7 @@ public
     each numAzi=numAzi,
     each lat=lat)
              annotation (Placement(transformation(extent={{44,54},{64,74}})));
-public
+//public
   Modelica.Blocks.Sources.RealExpression TskyPow4Expr(y=TskyPow4)
     "Power 4 of sky temperature"
     annotation (Placement(transformation(extent={{66,10},{40,30}})));
@@ -177,7 +178,7 @@ public
   IDEAS.Buildings.Components.BaseClasses.EnergyPort E "Model internal energy"
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
-public
+//public
   Modelica.Blocks.Sources.RealExpression CEnv(y=0)
     "Concentration of trace substance in surroundings"
     annotation (Placement(transformation(extent={{-70,-58},{-50,-38}})));

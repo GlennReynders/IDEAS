@@ -1,9 +1,11 @@
 within IDEAS.Buildings.Components;
 model Window "Multipane window"
+protected
   replaceable IDEAS.Buildings.Data.Glazing.Ins2 glazing
     constrainedby IDEAS.Buildings.Data.Interfaces.Glazing "Glazing type"
     annotation (__Dymola_choicesAllMatching=true, Dialog(group=
           "Construction details"));
+public
   extends IDEAS.Buildings.Components.Interfaces.PartialSurface(
     dT_nominal_a=-3,
     intCon_a(final A=
@@ -45,7 +47,7 @@ protected
         extent={{10,-10},{-10,10}},
         rotation=-90,
         origin={-40,-100})));
-public
+//public
   parameter IDEAS.Buildings.Components.BaseClasses.WindowDynamicsType
     windowDynamicsType = IDEAS.Buildings.Components.BaseClasses.WindowDynamicsType.Two
     "Type of dynamics for glazing and frame: using zero, one combined or two states"

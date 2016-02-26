@@ -42,6 +42,7 @@ protected
 
   Modelica.SIunits.Temperature TAir=senTem.T;
   Modelica.SIunits.Temperature TStar=radDistr.TRad;
+public
   Modelica.SIunits.Energy E = vol.dynBal.U;
 
 protected

@@ -6,7 +6,8 @@ extends IDEAS.Fluid.Interfaces.PartialTwoPortInterface(final allowFlowReversal=f
   parameter Modelica.SIunits.Volume V "zone air volume";
   parameter Real n50(min=0)=0.4 "n50-value of airtightness";
 
-  outer IDEAS.SimInfoManager sim "Simulation information manager"
+  outer BoundaryConditions.SimInfoManager
+                             sim "Simulation information manager"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
 
   Fluid.Interfaces.IdealSource idealSourceOut(

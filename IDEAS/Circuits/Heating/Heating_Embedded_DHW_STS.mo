@@ -144,7 +144,7 @@ equation
   SOCTank = ctrl_Heating.SOC;
   QDHW = -dHW.pipe_HeatPort.heatPort.Q_flow;
   connect(pumpSto.port_a, tesTank.portHXLower) annotation (Line(
-      points={{-30,-50},{-26,-50},{-26,-13.8462}},
+      points={{-30,-50},{-26,-50},{-26,-16.9231}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(pipeDHW.heatPort, fixedTemperature.port) annotation (Line(
@@ -168,26 +168,25 @@ equation
       color={191,0,0},
       smooth=Smooth.None));
   connect(ctrl_Heating.onOff, pumpSto.m_flowSet) annotation (Line(
-      points={{-139.556,56.5},{-122,56.5},{-122,48},{-78,48},{-78,-34},{-37,-34},
-          {-37,-42.2}},
+      points={{-142,62},{-122,62},{-122,48},{-78,48},{-78,-34},{-37,-34},{-37,
+          -42.2}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(dHW.port_cold, pipeDHW.port_b) annotation (Line(
-      points={{-48.5,-7.35714},{-48.5,-29},{-44,-29}},
+      points={{-47,-8},{-47,-29},{-44,-29}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(tesTank.T[posTTop], ctrl_Heating.TTankTop) annotation (Line(
-      points={{2,4.61538},{18,4.61538},{18,80},{-176,80},{-176,71.375},{-161,
-          71.375}},
+      points={{2,4.61538},{18,4.61538},{18,80},{-176,80},{-176,64},{-160,64}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(tesTank.T[posTBot], ctrl_Heating.TTankBot) annotation (Line(
-      points={{2,4.61538},{10,4.61538},{10,4},{18,4},{18,80},{-176,80},{-176,
-          56.5},{-160.889,56.5}},
+      points={{2,4.61538},{10,4.61538},{10,4},{18,4},{18,80},{-176,80},{-176,60},
+          {-160,60}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(dHW.port_hot,senTemSto_top. port_b) annotation (Line(
-      points={{-48.5,10.6429},{-48.5,22},{-32,22}},
+      points={{-47,10},{-47,22},{-32,22}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(senTemSto_top.port_a, tesTank.port_a) annotation (Line(
@@ -215,7 +214,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(senTemStoHX_out.port_b, heater.port_a) annotation (Line(
-      points={{-78,-48},{-106,-48},{-106,17.4545},{-114,17.4545}},
+      points={{-78,-48},{-106,-48},{-106,16},{-114,16}},
       color={0,127,255},
       smooth=Smooth.None));
   connect(prescribedHeatFlow1.port, heatPortRad) annotation (Line(

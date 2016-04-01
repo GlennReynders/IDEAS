@@ -1,11 +1,17 @@
 within IDEAS.Buildings.Examples;
-model Structure_LUMPED "Example detailed building structure model LUMPED COMP"
+model Structure_lin "Example detailed building structure model"
   extends Modelica.Icons.Example;
   BaseClasses.structure structure(redeclare package Medium = IDEAS.Media.Air,
-    sF_roof(each layMul(lumped=false)),
-    sF_ext(each layMul(lumped=true)),
-    fF_ext(each layMul(lumped=false)),
-    gF_ext(each layMul(lumped=false)))
+    sF_roof(linearise_a=true),
+    sF_floor(linearise_a=true, linearise_b=true),
+    sF_ext(linearise_a=true),
+    sF_win(linearise_a=true),
+    fF_floor(linearise_a=true, linearise_b=true),
+    fF_ext(linearise_a=true),
+    gF_floor(linearise_a=true, linearise=true),
+    fF_win(linearise_a=true),
+    gF_ext(linearise_a=true),
+    gF_win(linearise_a=true))
     annotation (Placement(transformation(extent={{-36,-20},{-6,0}})));
   Circuits.Ventilation.None none(
     nLoads=0,
@@ -44,4 +50,4 @@ equation
             -100},{100,100}})),
     experiment(StopTime=8.64e+006),
     __Dymola_experimentSetupOutput);
-end Structure_LUMPED;
+end Structure_lin;

@@ -1,5 +1,6 @@
 within IDEAS.Buildings.Components.BaseClasses;
-model MultiLayer "multiple material layers in series"
+model MultiLayer2State
+  "Single state representation of multilayer conduction problem"
 
   parameter Modelica.SIunits.Area A "total multilayer area";
   parameter Modelica.SIunits.Angle inc
@@ -7,47 +8,25 @@ model MultiLayer "multiple material layers in series"
   parameter Integer nLay(min=1) "number of layers";
   parameter IDEAS.Buildings.Data.Interfaces.Material[nLay] mats
     "array of layer materials";
-  parameter Integer nGain = 0 "Number of gains";
-  parameter Boolean linIntCon=false
+  parameter Integer nGain = 1 "Number of gains";
+  parameter Boolean linIntCon=true
     "Linearise interior convection inside air layers / cavities in walls";
-  parameter Integer lumpingType = 0
-    "Boolean to use control volume method or lumped capacity model"                                 annotation (Dialog(tab="Dynamics"));
+
   parameter Modelica.SIunits.Temperature T_start[nLay]=ones(nLay)*293.15
     "Start temperature for each of the layers";
-  parameter Boolean placeCapacityAtSurf_b=true
+  final parameter Boolean placeCapacityAtSurf_b=false
     "Set to true to place last capacity at the surface b of the layer."
     annotation (Dialog(tab="Dynamics"));
-  final parameter Modelica.SIunits.ThermalInsulance R=sum(mats.R)
+  final parameter Modelica.SIunits.ThermalResistance R=sum(mats.R)/A
     "total specific thermal resistance";
-  parameter Modelica.SIunits.HeatCapacity C = sum(mats.d.*mats.rho.*mats.c*A)
-    "Total heat capacity of the layers"
-    annotation(Evaluate=true);
+
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial
     "Static (steady state) or transient (dynamic) thermal conduction model"
     annotation(Evaluate=true, Dialog(tab = "Dynamics", group="Equations"));
   parameter SI.TemperatureDifference dT_nom_air=1
     "Nominal temperature difference for air layers, used for linearising Rayleigh number";
 
-  Modelica.SIunits.Energy E=Einternal;
-  IDEAS.Buildings.Components.BaseClasses.DominantLayer domLay(mats=mats,nLay=nLay) if lumpingType==2;
-  IDEAS.Buildings.Components.BaseClasses.MonoLayer[nLay] monLay(
-    each final A=A,
-    each final inc=inc,
-    final T_start=T_start,
-    final mat=mats,
-    each linIntCon=linIntCon,
-    epsLw_a=cat(
-        1,
-        {0.85},
-        mats[1:nLay - 1].epsLw_b),
-    epsLw_b=cat(
-        1,
-        mats[2:nLay].epsLw_a,
-        {0.85}),
-    each placeCapacityAtSurf_b=placeCapacityAtSurf_b,
-    each final energyDynamics=energyDynamics,
-    each dT_nom_air=dT_nom_air) if lumpingType==0 "Individual layers"
-    annotation (Placement(transformation(extent={{-10,-50},{10,-70}})));
+  Modelica.SIunits.Energy E = C.C*C.T;
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a port_gain[nLay]
     "port for gains by embedded active layers"
@@ -75,16 +54,13 @@ model MultiLayer "multiple material layers in series"
         rotation=-90,
         origin={0,100})));
 
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor C11(C=sum(mats.d.*mats.rho.*mats.c*A)) if lumpingType==1
-    "Total heat capacity of the layers for 1 state model"
-       annotation (Evaluate=true,Placement(transformation(extent={{-12,14},{8,34}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalResistor Ros(R=Ros0) if lumpingType==1
-    " Thermal resistance between outside and capacity for 1 state model"
-    annotation (Placement(transformation(extent={{-62,4},{-42,24}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalResistor Ris(R=Ris0) if lumpingType==1
-    " Thermal resistance between inside and capacity for 1 state model"
-    annotation (Placement(transformation(extent={{28,4},{48,24}})));
-
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor C( C=sum(mats.d.*mats.rho.*mats.c*A))
+    "Total heat capacity of the layers"
+       annotation (Evaluate=true,Placement(transformation(extent={{-10,0},{10,20}})));
+  Modelica.Thermal.HeatTransfer.Components.ThermalResistor Ros(R=Ros0)
+    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+  Modelica.Thermal.HeatTransfer.Components.ThermalResistor Ris(R=Ris0)
+    annotation (Placement(transformation(extent={{36,-10},{56,10}})));
 protected
   parameter Modelica.SIunits.ThermalResistance Ris0( fixed=false)
     "temporary parameter for calculation of Ris";
@@ -96,95 +72,41 @@ protected
     "temporary parameter for calculation Ros";
   parameter Modelica.SIunits.ThermalResistance Rj( fixed = false)
     "temporary parameter for calculation of Ris and Ros";
-  Modelica.Blocks.Sources.RealExpression Elumped1(y=C11.C*C11.T) if lumpingType==1;
-  Modelica.Blocks.Sources.RealExpression Ecvm(y= sum(monLay.E)) if  lumpingType==0;
-  Modelica.Blocks.Sources.RealExpression Elumped2(y= C21.C*C21.T+C22.C*C22.T) if lumpingType==2;
-  Modelica.Blocks.Interfaces.RealInput Einternal;
-public
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor C21(C=domLay.C1*A) if  lumpingType==2
-    "Outer heat capacity of the layers for 2 state model" annotation (Evaluate=true,
-      Placement(transformation(extent={{-42,58},{-22,78}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor C22(C=domLay.C2*A) if  lumpingType==2
-    "Inner heat capacity of the layers for 2 state model" annotation (Evaluate=true,
-      Placement(transformation(extent={{22,58},{42,78}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalResistor R21(R=domLay.R1/A) if lumpingType==2
-    "Thermal resistance between outside and capacity for 2 state model"
-    annotation (Placement(transformation(extent={{-70,48},{-50,68}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalResistor R22(R=domLay.R2/A) if lumpingType==2
-    " Thermal resistance between the capacities for 2 state model"
-    annotation (Placement(transformation(extent={{-10,48},{10,68}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalResistor R23(R=domLay.R3/A) if lumpingType==2
-    " Thermal resistance between inside and capacity for 2 state model"
-    annotation (Placement(transformation(extent={{48,48},{68,68}})));
+  IDEAS.Buildings.Components.BaseClasses.DominantLayer domLay(nLay=nLay,mats=mats);
 initial algorithm
       Ris0 :=0;
-      Ros0 :=R/A;
+      Ros0 :=R;
       TCis0 :=0;
       TCos0 :=0;
       for j in 1:nLay loop
-        Rj :=mats[j].R/A;
-        Ris0 :=Ris0 + Rj/2;
-        Ros0 :=Ros0 - Rj/2;
-        TCis0 :=TCis0 + Ris0*mats[j].d*mats[j].c*mats[j].rho*A;
-        TCos0 :=TCos0 + Ros0*mats[j].d*mats[j].c*mats[j].rho*A;
-        Ris0 :=Ris0 + Rj/2;
-        Ros0 :=Ros0 - Rj/2;
+      Rj :=mats[j].R/A;
+      Ris0 :=Ris0 + Rj/2;
+      Ros0 :=Ros0 - Rj/2;
+      TCis0 :=TCis0 + Ris0*mats[j].d*mats[j].c*mats[j].rho*A;
+      TCos0 :=TCos0 + Ros0*mats[j].d*mats[j].c*mats[j].rho*A;
+      Ris0 :=Ris0 + Rj/2;
+      Ros0 :=Ros0 - Rj/2;
       end for;
-      Ros0 :=R/A*TCos0/(TCos0 + TCis0);
-      Ris0 :=R/A*TCis0/(TCos0 + TCis0);
-
+      Ros0 :=R*TCos0/(TCos0 + TCis0);
+      Ris0 :=R*TCis0/(TCos0 + TCis0);
 equation
-  connect(Einternal,Elumped1.y);
-  connect(Einternal,Ecvm.y);
-  connect(Einternal,Elumped2.y);
   // Last layer of monLay is connected to port_a
-  connect(port_a, monLay[nLay].port_a)
-    annotation (Line(points={{-100,0},{-100,-60},{-10,-60}},
-                                                         color={191,0,0}));
-  for j in 1:nLay - 1 loop
-    connect(monLay[nLay - j + 1].port_b, monLay[nLay - j].port_a);
-  end for;
-  connect(port_b, monLay[1].port_b)
-    annotation (Line(points={{100,0},{86,0},{86,-60},{10,-60}},
-                                              color={191,0,0}));
-
-  connect(monLay.port_gain, port_gain) annotation (Line(points={{0,-70},{0,-76},
-          {0,-76},{0,-82},{0,-90},{0,-90},{0,-100}},
-                             color={191,0,0}));
 
   iEpsLw_a = mats[1].epsLw_a;
   iEpsSw_a = mats[1].epsSw_a;
   iEpsLw_b = mats[nLay].epsLw_b;
   iEpsSw_b = mats[nLay].epsSw_b;
 
-  connect(port_a,Ros. port_a)
-    annotation (Line(points={{-100,0},{-76,0},{-76,14},{-62,14},{-62,14}},
-                                                        color={191,0,0}));
+  connect(port_a, Ros.port_a)
+    annotation (Line(points={{-100,0},{-80,0},{-60,0}}, color={191,0,0}));
+  connect(Ros.port_b, C.port)
+    annotation (Line(points={{-40,0},{-20,0},{0,0}}, color={191,0,0}));
+  connect(C.port, Ris.port_a)
+    annotation (Line(points={{0,0},{18,0},{36,0}}, color={191,0,0}));
   connect(Ris.port_b, port_b)
-    annotation (Line(points={{48,14},{86,14},{86,0},{100,0}},
-                                                     color={191,0,0}));
-
-  connect(Ros.port_b, C11.port)
-    annotation (Line(points={{-42,14},{-20,14},{-2,14}}, color={191,0,0}));
-  connect(C11.port, Ris.port_a)
-    annotation (Line(points={{-2,14},{-2,14},{28,14}}, color={191,0,0}));
-  connect(R23.port_b, port_b) annotation (Line(points={{68,58},{86,58},{86,0},{100,
-          0}}, color={191,0,0}));
-  connect(C22.port, R23.port_a)
-    annotation (Line(points={{32,58},{40,58},{48,58}}, color={191,0,0}));
-  connect(C22.port, R22.port_b)
-    annotation (Line(points={{32,58},{10,58},{10,58}}, color={191,0,0}));
-  connect(R22.port_a, C21.port)
-    annotation (Line(points={{-10,58},{-32,58}}, color={191,0,0}));
-  connect(C21.port, R21.port_b)
-    annotation (Line(points={{-32,58},{-50,58}}, color={191,0,0}));
-  connect(R21.port_a, port_a) annotation (Line(points={{-70,58},{-76,58},{-76,0},
-          {-100,0}}, color={191,0,0}));
-
-  for i in 1:nLay loop
-    connect(port_gain[i],C11.port);
-     connect(port_gain[i],C22.port);
-  end for;
+    annotation (Line(points={{56,0},{78,0},{100,0}}, color={191,0,0}));
+  connect(port_gain[1], C.port)
+    annotation (Line(points={{0,-100},{0,-100},{0,0}}, color={191,0,0}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
             100}})),
@@ -241,4 +163,4 @@ Revised implementation: now only one MultiLayer component exists.
 </li>
 </ul>
 </html>"));
-end MultiLayer;
+end MultiLayer2State;

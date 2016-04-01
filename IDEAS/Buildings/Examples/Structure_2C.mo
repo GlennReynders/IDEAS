@@ -1,7 +1,17 @@
 within IDEAS.Buildings.Examples;
-model Structure "Example detailed building structure model"
+model Structure_2C "Example detailed building structure model"
   extends Modelica.Icons.Example;
-  BaseClasses.structure structure(redeclare package Medium = IDEAS.Media.Air)
+  BaseClasses.structure structure(redeclare package Medium = IDEAS.Media.Air,
+    sF_roof(linearise_a=true, layMul(lumpingType=2)),
+    sF_floor(linearise_a=true, linearise_b=true, layMul(lumpingType=0)),
+    sF_ext(linearise_a=true, layMul(lumpingType=2)),
+    sF_win(linearise_a=true),
+    fF_floor(linearise_a=true, linearise_b=true, layMul(lumpingType=0)),
+    fF_ext(linearise_a=true, layMul(lumpingType=2)),
+    gF_floor(linearise_a=true, linearise=true, layMul(lumpingType=0)),
+    fF_win(linearise_a=true),
+    gF_ext(linearise_a=true, layMul(lumpingType=2)),
+    gF_win(linearise_a=true))
     annotation (Placement(transformation(extent={{-36,-20},{-6,0}})));
   Circuits.Ventilation.None none(
     nLoads=0,
@@ -44,4 +54,4 @@ equation
       Tolerance=1e-006,
       __Dymola_Algorithm="Lsodar"),
     __Dymola_experimentSetupOutput);
-end Structure;
+end Structure_2C;

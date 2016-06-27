@@ -21,8 +21,7 @@ public
         extent={{-20,-20},{20,20}},
         rotation=180,
         origin={-100,30})));
-   Modelica.Blocks.Interfaces.RealOutput QFinal "Reactive power flow with grid"
-                                                                                annotation (Placement(
+   Modelica.Blocks.Interfaces.RealOutput QFinal "Reactive power flow with grid" annotation (Placement(
          transformation(
          extent={{-20,-20},{20,20}},
          rotation=180,

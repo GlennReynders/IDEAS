@@ -135,8 +135,8 @@ equation
     TEvapIn = IDEAS.Utilities.Math.Functions.spliceFunction(
               x=port_a1.m_flow,
               pos=Medium1.temperature(Medium1.setState_phX(port_a1.p, inStream(port_a1.h_outflow), inStream(port_a1.Xi_outflow))),
-              neg=  Medium1.temperature(Medium1.setState_phX(port_b1.p, inStream(port_b1.h_outflow), inStream(port_b1.Xi_outflow))),
-              deltax=  m1_flow_nominal/10);
+              neg = Medium1.temperature(Medium1.setState_phX(port_b1.p, inStream(port_b1.h_outflow), inStream(port_b1.Xi_outflow))),
+              deltax = m1_flow_nominal/10);
   else
     TEvapIn = Medium1.temperature(Medium1.setState_phX(port_a1.p, inStream(port_a1.h_outflow), inStream(port_a1.Xi_outflow)));
   end if;

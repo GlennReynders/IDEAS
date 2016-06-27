@@ -77,11 +77,11 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(corHeaCur.y, add2.u1) annotation (Line(
-      points={{1,20},{36,20},{36,4.8},{54.4,4.8}},
+      points={{1,30},{36,30},{36,4.8},{54.4,4.8}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(realExpression2.y, add2.u2) annotation (Line(
-      points={{16.2,-3},{35.1,-3},{35.1,-4.8},{54.4,-4.8}},
+      points={{2.2,10},{35.1,10},{35.1,-4.8},{54.4,-4.8}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(add2.y, THeaterSet) annotation (Line(

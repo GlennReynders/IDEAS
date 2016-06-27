@@ -84,11 +84,11 @@ equation
       color={135,135,135},
       smooth=Smooth.None));
   connect(pvVoltageCtrl.PFinal, wattsLaw.P) annotation (Line(
-      points={{46,34},{53,34},{53,36},{60.2,36}},
+      points={{46,34},{53,34},{53,35},{64,35}},
       color={135,135,135},
       smooth=Smooth.None));
   connect(pvVoltageCtrl.QFinal, wattsLaw.Q) annotation (Line(
-      points={{46,24},{54,24},{54,32},{60.2,32}},
+      points={{46,24},{54,24},{54,31},{63,31}},
       color={135,135,135},
       smooth=Smooth.None));
   connect(pin, pvVoltageCtrl.pin) annotation (Line(

@@ -28,8 +28,7 @@ model Zone "thermal building zone"
   final parameter Modelica.SIunits.Power QRH_design=A*fRH
     "Additional power required to compensate for the effects of intermittent heating";
   parameter Real fRH=11
-    "Reheat factor for calculation of design heat load, (EN 12831, table D.10 Annex D)"
-                                                                                        annotation(Dialog(group="Design heat load"));
+    "Reheat factor for calculation of design heat load, (EN 12831, table D.10 Annex D)" annotation(Dialog(group="Design heat load"));
   parameter Modelica.SIunits.Area A = V/hZone "Total conditioned floor area" annotation(Dialog(group="Design heat load"));
   parameter Modelica.SIunits.Length hZone = 2.8
     "Zone height: distance between floor and ceiling";

@@ -405,8 +405,7 @@ protected
        opaSkyCovSou == IDEAS.BoundaryConditions.Types.DataSource.File
     "Convert sky cover from [0...10] to [0...1]"
     annotation (Placement(transformation(extent={{120,-158},{140,-138}})));
-  IDEAS.BoundaryConditions.WeatherData.BaseClasses.CheckBlackBodySkyTemperature
-                                                                                  cheTemBlaSky(TMin=0)
+  IDEAS.BoundaryConditions.WeatherData.BaseClasses.CheckBlackBodySkyTemperature   cheTemBlaSky(TMin=0)
     "Check black body sky temperature"
     annotation (Placement(transformation(extent={{240,-260},{260,-240}})));
 

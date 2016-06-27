@@ -51,13 +51,13 @@ equation
     XiDryBul = 0;
   else
     XiSat  = IDEAS.Utilities.Psychrometrics.Functions.X_pSatpphi(
-      pSat=  IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
-      p=     p,
-      phi=   1);
+      pSat = IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
+      p =    p,
+      phi =  1);
     XiDryBul =IDEAS.Utilities.Psychrometrics.Functions.X_pSatpphi(
-      p=     p,
-      pSat=  IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TDryBul),
-      phi=   phi);
+      p =    p,
+      pSat = IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TDryBul),
+      phi =  phi);
     TWetBul = (TDryBul * ((1-XiDryBul) *
                IDEAS.Utilities.Psychrometrics.Constants.cpAir + XiDryBul *
                IDEAS.Utilities.Psychrometrics.Constants.cpSte) + (XiDryBul-XiSat) *

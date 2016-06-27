@@ -26,10 +26,11 @@ import SI = Modelica.SIunits;
 
 
 annotation (
-  uses(Modelica(version="3.2.1")),
+  uses(Modelica(version="3.2.2"), Renovates(version="1")),
   Icon(graphics),
-  version="0.2",
-  conversion(noneFromVersion="", noneFromVersion="1"),
+  version="0.3",
+  conversion(noneFromVersion="", noneFromVersion="1",
+    noneFromVersion="0.2"),
   Documentation(info="<html>
 <p>Licensed by KU Leuven and 3E under the Modelica License 2 </p>
 <p>Copyright &copy; 2013-2023, KU Leuven and 3E. </p>

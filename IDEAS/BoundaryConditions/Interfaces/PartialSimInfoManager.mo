@@ -71,7 +71,7 @@ public
   Modelica.SIunits.Energy Etot "Total internal energy";
   Modelica.SIunits.Energy Qint "Total energy from boundary";
 
-  Real hCon=IDEAS.Utilities.Math.Functions.spliceFunction(x=Va-5, pos= 7.1*abs(Va)^(0.78), neg=  4.0*Va + 5.6, deltax=0.5);
+  Real hCon=IDEAS.Utilities.Math.Functions.spliceFunction(x=Va-5, pos= 7.1*abs(Va)^(0.78), neg = 4.0*Va + 5.6, deltax=0.5);
   Real TePow4 = Te^4;
   Real TskyPow4 = Tsky^4;
   Real angDec=asin(-sin(23.45*Modelica.Constants.pi/180)*cos((timLoc/86400 +

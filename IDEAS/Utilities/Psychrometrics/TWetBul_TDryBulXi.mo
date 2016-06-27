@@ -67,9 +67,9 @@ equation
     XiSat = 0;
   else
     XiSat  = IDEAS.Utilities.Psychrometrics.Functions.X_pSatpphi(
-      pSat=  IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
-      p=     p,
-      phi=   1);
+      pSat = IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
+      p =    p,
+      phi =  1);
     TWetBul = (TDryBul *
                 ((1-Xi[iWat]) * IDEAS.Utilities.Psychrometrics.Constants.cpAir +
                 Xi[iWat] * IDEAS.Utilities.Psychrometrics.Constants.cpSte) +

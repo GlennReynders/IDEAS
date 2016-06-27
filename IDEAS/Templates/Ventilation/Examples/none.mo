@@ -4,8 +4,8 @@ parameter Boolean standAlone=true;
 
 replaceable package Medium =      IDEAS.Media.Air;
 
-  Buildings.Examples.BaseClasses.structure structure(redeclare package Medium
-      = Medium)
+  Buildings.Examples.BaseClasses.structure structure(redeclare package Medium =
+        Medium)
     annotation (Placement(transformation(extent={{-78,-40},{-48,-20}})));
   None none(
     nZones=3,

@@ -34,11 +34,11 @@ equation
       color={0,0,255},
       smooth=Smooth.None));
   connect(pvVoltageCtrl.PFinal, wattsLaw.P) annotation (Line(
-      points={{46,36},{53,36},{53,36},{60.2,36}},
+      points={{46,34},{53,34},{53,35},{64,35}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(pvVoltageCtrl.QFinal, wattsLaw.Q) annotation (Line(
-      points={{46,32},{54,32},{54,32},{60.2,32}},
+      points={{46,24},{54,24},{54,31},{63,31}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(pin, pvVoltageCtrl.pin) annotation (Line(
@@ -46,11 +46,11 @@ equation
       color={0,0,255},
       smooth=Smooth.None));
   connect(inverter.P, pvVoltageCtrl.PInit) annotation (Line(
-      points={{-19.4,36},{4,36},{4,36},{26,36}},
+      points={{-19.4,36},{4,36},{4,34},{26,34}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(inverter.Q, pvVoltageCtrl.QInit) annotation (Line(
-      points={{-19.6,32},{4,32},{4,32},{26,32}},
+      points={{-19.6,32},{4,32},{4,24},{26,24}},
       color={0,0,127},
       smooth=Smooth.None));
   PInit = pvVoltageCtrl.PInit;

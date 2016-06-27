@@ -21,8 +21,8 @@ initial equation
 equation
   x = time^3*gain;
   y = IDEAS.Utilities.Math.Functions.inverseXRegularized(
-    x=  x,
-    delta=  delta);
+    x = x,
+    delta = delta);
 
   der_y = der(y);
   der_y_comp = der(y_comp);

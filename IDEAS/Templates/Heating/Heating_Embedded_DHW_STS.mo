@@ -91,14 +91,13 @@ model Heating_Embedded_DHW_STS
         extent={{-9,5},{9,-5}},
         rotation=-90,
         origin={-47,1})));
-  IDEAS.Fluid.FixedResistances.InsulatedPipe pipeDHW(redeclare package Medium
-      =                                                                          Medium, m=1,
+  IDEAS.Fluid.FixedResistances.InsulatedPipe pipeDHW(redeclare package Medium =  Medium, m=1,
     UA=10,
     m_flow_nominal=m_flow_nominal_DHW)
     annotation (Placement(transformation(extent={{-28,-32},{-44,-26}})));
   Fluid.Sources.FixedBoundary       absolutePressure1(
-                                                     redeclare package Medium
-      = Medium, use_T=false,
+                                                     redeclare package Medium =
+        Medium, use_T=false,
     nPorts=1)
     annotation (Placement(transformation(extent={{-6,-6},{6,6}},
         rotation=90,

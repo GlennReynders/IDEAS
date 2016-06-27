@@ -36,9 +36,9 @@ block WetBul_pTX
   annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 equation
   XWetBul   = IDEAS.Utilities.Psychrometrics.Functions.X_pSatpphi(
-      pSat=   IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
-      p=     p,
-      phi=   1);
+      pSat =  IDEAS.Utilities.Psychrometrics.Functions.saturationPressureLiquid(TWetBul),
+      p =    p,
+      phi =  1);
   TWetBul = (TDryBul * ((1-XDryBul) * IDEAS.Utilities.Psychrometrics.Constants.cpAir +
              XDryBul * IDEAS.Utilities.Psychrometrics.Constants.cpSte) +
              (XDryBul-XWetBul) * IDEAS.Utilities.Psychrometrics.Constants.h_fg)/

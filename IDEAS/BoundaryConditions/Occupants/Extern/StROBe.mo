@@ -6,7 +6,7 @@ model StROBe "StROBe occupant, for multi zone building models"
   outer StrobeInfoManager strobe(final StROBe_P=true, StROBe = true)
     annotation (Placement(transformation(extent={{-186,80},{-166,100}})));
 
-  parameter Modelica.SIunits.Volume[nZones] VZones "Zone volumes";
+  parameter Modelica.SIunits.Volume[nZones] VZones=ones(nZones)*100 "Zone volumes";
   final parameter Real[nZones] fV = VZones/sum(VZones) "Zone volume fractions";
 
 protected

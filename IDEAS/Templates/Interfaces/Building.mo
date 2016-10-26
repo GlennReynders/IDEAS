@@ -3,11 +3,13 @@ model Building
 
   outer IDEAS.BoundaryConditions.SimInfoManager sim
     annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
-
+   outer BoundaryConditions.Occupants.Extern.StrobeInfoManager strobe if useStROBe
+    annotation (Placement(transformation(extent={{-76,80},{-56,100}})));
   replaceable package Medium=IDEAS.Media.Water;
   replaceable package MediumAir=IDEAS.Media.Air;
 
   parameter Boolean standAlone=true;
+  parameter Boolean useStROBe=false;
   parameter Boolean isDH=false "True if the building is connected to a DH grid";
 
   final parameter Modelica.SIunits.Temperature[building.nZones] T_start = ones(building.nZones)*293.15
@@ -72,8 +74,12 @@ model Building
     if                                           isDH
     annotation (Placement(transformation(extent={{-30,-110},{-10,-90}})));
   final parameter Boolean InInterface = true;
+
 initial equation
    voltageSource.pin_n.reference.gamma=0;
+
+
+
 
 
 equation
